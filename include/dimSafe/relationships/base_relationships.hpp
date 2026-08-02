@@ -1,4 +1,10 @@
-#include "dimSafe/relationship.hpp"
+#pragma once
+
+#include "../relationships.hpp"
+#include "../quantities/base_quantities.hpp"
+
+namespace dimSafe {
+
 template<typename LeftRep, typename RightRep>
 struct MultiplyRule<
     Velocity<LeftRep>,
@@ -16,3 +22,5 @@ struct DivideRule<
     using result_tag = VelocityTag;
     using result_dimension = VelocityDimension;
 };
+
+} // namespace dimSafe

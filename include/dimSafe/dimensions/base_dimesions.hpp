@@ -1,5 +1,8 @@
-#include "dimSafe/dimension.hpp"
+#pragma once
 
+#include "../dimension.hpp"
+
+namespace dimSafe {
 
 using LengthDimension =
     Dimension<1, 0, 0, 0, 0, 0, 0>;
@@ -12,3 +15,5 @@ using VelocityDimension =
 
 using AccelerationDimension =
     Dimension<1, 0, -2, 0, 0, 0, 0>;
+
+} // namespace dimSafe

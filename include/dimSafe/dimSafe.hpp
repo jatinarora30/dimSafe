@@ -1,10 +1,10 @@
-#include <iostream>
-#include "dimSafe/dimensions/base_dimesions.hpp"
-#include "dimSafe/relationships/base_relationships.hpp"
-#include "dimSafe/quantities/base_quantities.hpp"
-#include "dimSafe/quantity.hpp"
-using namespace std;
-
+#pragma once
+#include <type_traits>
+#include "quantity.hpp"
+#include "dimensions/base_dimesions.hpp"
+#include "quantities/base_quantities.hpp"
+#include "relationships/base_relationships.hpp"
+namespace dimSafe {
 template<
 
     typename LeftTag,
@@ -136,5 +136,5 @@ constexpr auto operator*(
         static_cast<ResultRep>(rhs.value_)
 
     };
-
+}
 }

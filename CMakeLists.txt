@@ -12,6 +12,8 @@ project(
 
 add_library(dimSafe INTERFACE)
 
+target_compile_features(dimSafe INTERFACE cxx_std_20)
+
 target_include_directories(
     dimSafe
     INTERFACE
@@ -19,10 +21,12 @@ target_include_directories(
         $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(
+target_compile_options(
     dimSafe
     INTERFACE
-        cxx_std_20
+        -O3
+        -march=native
+        -flto
 )
 
 # ------------------------------------------------------------

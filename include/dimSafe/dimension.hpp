@@ -1,3 +1,5 @@
+#pragma once
+
 template<int Length,int Mass,int Time,int Current,int Temperature,int Amount,int LuminousIntensity>
 struct Dimension{
     static constexpr int length = Length;
