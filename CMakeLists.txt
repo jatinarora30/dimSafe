@@ -56,17 +56,28 @@ endif()
 enable_testing()
 
 add_executable(
-    dimSafe_tests
-    test/test.cpp
+    dimSafe_benchmark
+    test/benchmark.cpp
+)
+
+add_executable(
+    dimSafe_example
+    examples/example.cpp
 )
 
 target_link_libraries(
-    dimSafe_tests
+    dimSafe_example
+    PRIVATE
+        dimSafe
+)
+
+target_link_libraries(
+    dimSafe_benchmark
     PRIVATE
         dimSafe
 )
 
 add_test(
-    NAME dimSafe_tests
-    COMMAND dimSafe_tests
+    NAME dimSafe_benchmark
+    COMMAND dimSafe_benchmark
 )

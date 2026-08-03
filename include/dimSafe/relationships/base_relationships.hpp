@@ -2,25 +2,13 @@
 
 #include "../relationships.hpp"
 #include "../quantities/base_quantities.hpp"
+#include "../quantities/mechanical_quantities.hpp"
+#include "../quantities/electrical_quantities.hpp"
+#include "../quantities/thermal_quantities.hpp"
+#include "mechanical_relationships.hpp"
+#include "electrical_relationships.hpp"
+#include "thermal_relationships.hpp"
 
 namespace dimSafe {
-
-template<typename LeftRep, typename RightRep>
-struct MultiplyRule<
-    Velocity<LeftRep>,
-    Duration<RightRep>>
-{
-    using result_tag = DistanceTag;
-    using result_dimension = LengthDimension;
-};
-
-template<typename LeftRep, typename RightRep>
-struct DivideRule<
-    Distance<LeftRep>,
-    Duration<RightRep>>
-{
-    using result_tag = VelocityTag;
-    using result_dimension = VelocityDimension;
-};
 
 } // namespace dimSafe

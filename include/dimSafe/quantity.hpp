@@ -10,16 +10,41 @@ public:
 
     Rep value_;
 
-    Quantity operator+(const Quantity& other) const {
+    constexpr Quantity operator+(const Quantity& other) const noexcept {
         return Quantity{value_ + other.value_};
     }
 
-    Quantity operator-(const Quantity& other) const {
+    constexpr Quantity operator-(const Quantity& other) const noexcept {
         return Quantity{value_ - other.value_};
     }
 
-    Quantity scale(const float s) const {
-        return Quantity{value_ * s};
+    constexpr bool operator==(const Quantity& other) const noexcept {
+        return value_ == other.value_;
+    }
+
+    constexpr bool operator!=(const Quantity& other) const noexcept {
+        return value_ != other.value_;
+    }
+
+    constexpr bool operator<(const Quantity& other) const noexcept {
+        return value_ < other.value_;
+    }
+
+    constexpr bool operator<=(const Quantity& other) const noexcept {
+        return value_ <= other.value_;
+    }
+
+    constexpr bool operator>(const Quantity& other) const noexcept {
+        return value_ > other.value_;
+    }
+
+    constexpr bool operator>=(const Quantity& other) const noexcept {
+        return value_ >= other.value_;
+    }
+
+    template<typename Scalar>
+    constexpr Quantity scale(Scalar s) const noexcept {
+        return Quantity{static_cast<Rep>(value_ * static_cast<Rep>(s))};
     }
 };
 

@@ -2,7 +2,13 @@
 #include <type_traits>
 #include "quantity.hpp"
 #include "dimensions/base_dimesions.hpp"
+#include "dimensions/mechanical_dimensions.hpp"
+#include "dimensions/electrical_dimensions.hpp"
+#include "dimensions/thermal_dimensions.hpp"
 #include "quantities/base_quantities.hpp"
+#include "quantities/mechanical_quantities.hpp"
+#include "quantities/electrical_quantities.hpp"
+#include "quantities/thermal_quantities.hpp"
 #include "relationships/base_relationships.hpp"
 namespace dimSafe {
 template<
