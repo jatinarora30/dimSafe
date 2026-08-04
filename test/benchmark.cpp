@@ -272,11 +272,11 @@ static double benchmarkRawAddSubScale(size_t iterations) {
 }
 
 int main() {
-    static_assert(std::same_as<dimSafe::Distance<>, dimSafe::Quantity<dimSafe::DistanceTag, dimSafe::LengthDimension, double>>);
-    static_assert(std::same_as<dimSafe::Duration<>, dimSafe::Quantity<dimSafe::DurationTag, dimSafe::TimeDimension, double>>);
-    static_assert(std::same_as<dimSafe::Velocity<>, dimSafe::Quantity<dimSafe::VelocityTag, dimSafe::VelocityDimension, double>>);
-    static_assert(std::same_as<dimSafe::Force<>, dimSafe::Quantity<dimSafe::ForceTag, dimSafe::ForceDimension, double>>);
-    static_assert(std::same_as<dimSafe::Energy<>, dimSafe::Quantity<dimSafe::EnergyTag, dimSafe::EnergyDimension, double>>);
+    static_assert(std::same_as<dimSafe::Distance<>, dimSafe::Quantity<dimSafe::LengthDimension, double>>);
+    static_assert(std::same_as<dimSafe::Duration<>, dimSafe::Quantity<dimSafe::TimeDimension, double>>);
+    static_assert(std::same_as<dimSafe::Velocity<>, dimSafe::Quantity<dimSafe::VelocityDimension, double>>);
+    static_assert(std::same_as<dimSafe::Force<>, dimSafe::Quantity<dimSafe::ForceDimension, double>>);
+    static_assert(std::same_as<dimSafe::Energy<>, dimSafe::Quantity<dimSafe::EnergyDimension, double>>);
     static_assert(sizeof(dimSafe::Distance<>) == sizeof(double));
     static_assert(sizeof(dimSafe::Duration<>) == sizeof(double));
     static_assert(sizeof(dimSafe::Velocity<>) == sizeof(double));
@@ -316,7 +316,7 @@ int main() {
     dimSafe::Distance<float> floatDistance{3.5f};
     dimSafe::Duration<double> doubleDuration{1.4};
     auto floatVelocity = floatDistance / doubleDuration;
-    static_assert(std::same_as<decltype(floatVelocity), dimSafe::Quantity<dimSafe::VelocityTag, dimSafe::VelocityDimension, double>>);
+    static_assert(std::same_as<decltype(floatVelocity), dimSafe::Quantity<dimSafe::VelocityDimension, double>>);
     assert(std::abs(floatVelocity.value_ - (3.5 / 1.4)) < 1e-12);
 
     const size_t iterations = 10'000'000;

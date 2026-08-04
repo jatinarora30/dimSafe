@@ -65,6 +65,21 @@ add_executable(
     examples/example.cpp
 )
 
+add_executable(
+    dimSafe_test_arithmetic
+    test/test_arithmetic.cpp
+)
+
+add_executable(
+    dimSafe_test_dimension_math
+    test/test_dimension_math.cpp
+)
+
+add_executable(
+    dimSafe_test_comparisons
+    test/test_comparisons.cpp
+)
+
 target_link_libraries(
     dimSafe_example
     PRIVATE
@@ -77,7 +92,40 @@ target_link_libraries(
         dimSafe
 )
 
+target_link_libraries(
+    dimSafe_test_arithmetic
+    PRIVATE
+        dimSafe
+)
+
+target_link_libraries(
+    dimSafe_test_dimension_math
+    PRIVATE
+        dimSafe
+)
+
+target_link_libraries(
+    dimSafe_test_comparisons
+    PRIVATE
+        dimSafe
+)
+
 add_test(
     NAME dimSafe_benchmark
     COMMAND dimSafe_benchmark
+)
+
+add_test(
+    NAME dimSafe_test_arithmetic
+    COMMAND dimSafe_test_arithmetic
+)
+
+add_test(
+    NAME dimSafe_test_dimension_math
+    COMMAND dimSafe_test_dimension_math
+)
+
+add_test(
+    NAME dimSafe_test_comparisons
+    COMMAND dimSafe_test_comparisons
 )

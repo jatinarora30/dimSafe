@@ -6,37 +6,29 @@
 
 namespace dimSafe {
 
-struct ForceTag {};
-struct MomentumTag {};
-struct EnergyTag {};
-struct PowerTag {};
-struct AreaTag {};
-struct VolumeTag {};
-struct PressureTag {};
-struct DensityTag {};
 
 template<typename Rep = double>
-using Force = Quantity<ForceTag, ForceDimension, Rep>;
+using Force = Quantity<ForceDimension, Rep>;
 
 template<typename Rep = double>
-using Momentum = Quantity<MomentumTag, MomentumDimension, Rep>;
+using Momentum = Quantity<MomentumDimension, Rep>;
 
 template<typename Rep = double>
-using Energy = Quantity<EnergyTag, EnergyDimension, Rep>;
+using Energy = Quantity<EnergyDimension, Rep>;
 
 template<typename Rep = double>
-using Power = Quantity<PowerTag, PowerDimension, Rep>;
+using Power = Quantity<PowerDimension, Rep>;
 
 template<typename Rep = double>
-using Area = Quantity<AreaTag, AreaDimension, Rep>;
+using Area = Quantity<AreaDimension, Rep>;
 
 template<typename Rep = double>
-using Volume = Quantity<VolumeTag, VolumeDimension, Rep>;
+using Volume = Quantity<VolumeDimension, Rep>;
 
 template<typename Rep = double>
-using Pressure = Quantity<PressureTag, PressureDimension, Rep>;
+using Pressure = Quantity<PressureDimension, Rep>;
 
 template<typename Rep = double>
-using Density = Quantity<DensityTag, DensityDimension, Rep>;
+using Density = Quantity<DensityDimension, Rep>;
 
 } // namespace dimSafe

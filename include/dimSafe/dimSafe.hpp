@@ -9,138 +9,70 @@
 #include "quantities/mechanical_quantities.hpp"
 #include "quantities/electrical_quantities.hpp"
 #include "quantities/thermal_quantities.hpp"
-#include "relationships/base_relationships.hpp"
 namespace dimSafe {
-template<
 
-    typename LeftTag,
+    template<typename LeftDimension, typename RightDimension >
+    using MultiplyDimension = Dimension<
+        LeftDimension::length + RightDimension::length,
+        LeftDimension::mass + RightDimension::mass,
+        LeftDimension::time + RightDimension::time,
+        LeftDimension::current + RightDimension::current,
+        LeftDimension::temperature + RightDimension::temperature,
+        LeftDimension::amount + RightDimension::amount,
+        LeftDimension::luminous_intensity + RightDimension::luminous_intensity
+    >;
 
-    typename LeftDimension,
-
-    typename LeftRep,
-
-    typename RightTag,
-
-    typename RightDimension,
-
-    typename RightRep>
+    template<typename LeftDimension, typename RightDimension>
+    using DivideDimension = Dimension<
+        LeftDimension::length - RightDimension::length,
+        LeftDimension::mass - RightDimension::mass,
+        LeftDimension::time - RightDimension::time,
+        LeftDimension::current - RightDimension::current,
+        LeftDimension::temperature - RightDimension::temperature,
+        LeftDimension::amount - RightDimension::amount,
+        LeftDimension::luminous_intensity - RightDimension::luminous_intensity
+    >;
+    
+    
+    template< typename LeftDimension, typename LeftRep,
+     typename RightDimension, typename RightRep>
 
 constexpr auto operator/(
 
-    const Quantity<LeftTag, LeftDimension, LeftRep>& lhs,
+    const Quantity< LeftDimension, LeftRep>& lhs,
 
-    const Quantity<RightTag, RightDimension, RightRep>& rhs)
+    const Quantity<RightDimension, RightRep>& rhs)
 
 {
-
-    using LeftQuantity =
-
-        Quantity<LeftTag, LeftDimension, LeftRep>;
-
-
-
-    using RightQuantity =
-
-        Quantity<RightTag, RightDimension, RightRep>;
-
-
-
-    using Rule =
-
-        DivideRule<LeftQuantity, RightQuantity>;
-
+    using result_dimension = DivideDimension<LeftDimension,RightDimension >;
 
 
     using ResultRep =
 
         std::common_type_t<LeftRep, RightRep>;
 
+        return Quantity<result_dimension, ResultRep>{lhs.value_ / rhs.value_};
 
+    };
 
-    using ResultQuantity =
-
-        Quantity<
-
-            typename Rule::result_tag,
-
-            typename Rule::result_dimension,
-
-            ResultRep>;
-
-
-
-    return ResultQuantity{
-
-        static_cast<ResultRep>(lhs.value_) /
-
-        static_cast<ResultRep>(rhs.value_)
-
-    };}
-
-    template<
-
-    typename LeftTag,
-
-    typename LeftDimension,
-
-    typename LeftRep,
-
-    typename RightTag,
-
-    typename RightDimension,
-
-    typename RightRep>
+       template< typename LeftDimension, typename LeftRep,
+     typename RightDimension, typename RightRep>
 
 constexpr auto operator*(
 
-    const Quantity<LeftTag, LeftDimension, LeftRep>& lhs,
+    const Quantity< LeftDimension, LeftRep>& lhs,
 
-    const Quantity<RightTag, RightDimension, RightRep>& rhs)
+    const Quantity<RightDimension, RightRep>& rhs)
 
 {
-
-    using LeftQuantity =
-
-        Quantity<LeftTag, LeftDimension, LeftRep>;
-
-
-
-    using RightQuantity =
-
-        Quantity<RightTag, RightDimension, RightRep>;
-
-
-
-    using Rule =
-
-        MultiplyRule<LeftQuantity, RightQuantity>;
-
+    using result_dimension = MultiplyDimension<LeftDimension,RightDimension >;
 
 
     using ResultRep =
 
         std::common_type_t<LeftRep, RightRep>;
 
-
-
-    using ResultQuantity =
-
-        Quantity<
-
-            typename Rule::result_tag,
-
-            typename Rule::result_dimension,
-
-            ResultRep>;
-
-
-
-    return ResultQuantity{
-
-        static_cast<ResultRep>(lhs.value_) *
-
-        static_cast<ResultRep>(rhs.value_)
+        return Quantity<result_dimension, ResultRep>{lhs.value_ * rhs.value_};
 
     };
-}
 }

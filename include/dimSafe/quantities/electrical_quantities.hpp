@@ -6,29 +6,24 @@
 
 namespace dimSafe {
 
-struct ChargeTag {};
-struct ElectricPotentialTag {};
-struct ResistanceTag {};
-struct CapacitanceTag {};
-struct InductanceTag {};
-struct ConductanceTag {};
+
 
 template<typename Rep = double>
-using Charge = Quantity<ChargeTag, ChargeDimension, Rep>;
+using Charge = Quantity<ChargeDimension, Rep>;
 
 template<typename Rep = double>
-using ElectricPotential = Quantity<ElectricPotentialTag, ElectricPotentialDimension, Rep>;
+using ElectricPotential = Quantity<ElectricPotentialDimension, Rep>;
 
 template<typename Rep = double>
-using Resistance = Quantity<ResistanceTag, ResistanceDimension, Rep>;
+using Resistance = Quantity<ResistanceDimension, Rep>;
 
 template<typename Rep = double>
-using Capacitance = Quantity<CapacitanceTag, CapacitanceDimension, Rep>;
+using Capacitance = Quantity<CapacitanceDimension, Rep>;
 
 template<typename Rep = double>
-using Inductance = Quantity<InductanceTag, InductanceDimension, Rep>;
+using Inductance = Quantity<InductanceDimension, Rep>;
 
 template<typename Rep = double>
-using Conductance = Quantity<ConductanceTag, ConductanceDimension, Rep>;
+using Conductance = Quantity<ConductanceDimension, Rep>;
 
 } // namespace dimSafe

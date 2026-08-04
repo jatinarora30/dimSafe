@@ -6,13 +6,11 @@
 
 namespace dimSafe {
 
-struct HeatCapacityTag {};
-struct EntropyTag {};
 
 template<typename Rep = double>
-using HeatCapacity = Quantity<HeatCapacityTag, HeatCapacityDimension, Rep>;
+using HeatCapacity = Quantity<HeatCapacityDimension, Rep>;
 
 template<typename Rep = double>
-using Entropy = Quantity<EntropyTag, EntropyDimension, Rep>;
+using Entropy = Quantity<EntropyDimension, Rep>;
 
 } // namespace dimSafe

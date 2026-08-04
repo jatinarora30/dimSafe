@@ -5,41 +5,31 @@
 
 namespace dimSafe {
 
-struct DistanceTag {};
-struct VelocityTag {};
-struct DurationTag {};
-struct AccelerationTag {};
-struct MassTag {};
-struct CurrentTag {};
-struct TemperatureTag {};
-struct AmountTag {};
-struct LuminousIntensityTag {};
+template<typename Rep = double>
+using Distance = Quantity<LengthDimension, Rep>;
 
 template<typename Rep = double>
-using Distance = Quantity<DistanceTag, LengthDimension, Rep>;
+using Duration = Quantity<TimeDimension, Rep>;
 
 template<typename Rep = double>
-using Duration = Quantity<DurationTag, TimeDimension, Rep>;
+using Velocity = Quantity<VelocityDimension, Rep>;
 
 template<typename Rep = double>
-using Velocity = Quantity<VelocityTag, VelocityDimension, Rep>;
+using Acceleration = Quantity< AccelerationDimension, Rep>;
 
 template<typename Rep = double>
-using Acceleration = Quantity<AccelerationTag, AccelerationDimension, Rep>;
+using Mass = Quantity<MassDimension, Rep>;
 
 template<typename Rep = double>
-using Mass = Quantity<MassTag, MassDimension, Rep>;
+using Current = Quantity<CurrentDimension, Rep>;
 
 template<typename Rep = double>
-using Current = Quantity<CurrentTag, CurrentDimension, Rep>;
+using Temperature = Quantity<TemperatureDimension, Rep>;
 
 template<typename Rep = double>
-using Temperature = Quantity<TemperatureTag, TemperatureDimension, Rep>;
+using Amount = Quantity<AmountDimension, Rep>;
 
 template<typename Rep = double>
-using Amount = Quantity<AmountTag, AmountDimension, Rep>;
-
-template<typename Rep = double>
-using LuminousIntensity = Quantity<LuminousIntensityTag, LuminousIntensityDimension, Rep>;
+using LuminousIntensity = Quantity<LuminousIntensityDimension, Rep>;
 
 } // namespace dimSafe
