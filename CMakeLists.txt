@@ -80,6 +80,11 @@ add_executable(
     test/test_comparisons.cpp
 )
 
+add_executable(
+    dimSafe_test_constructors
+    test/test_constructors.cpp
+)
+
 target_link_libraries(
     dimSafe_example
     PRIVATE
@@ -110,6 +115,12 @@ target_link_libraries(
         dimSafe
 )
 
+target_link_libraries(
+    dimSafe_test_constructors
+    PRIVATE
+        dimSafe
+)
+
 add_test(
     NAME dimSafe_benchmark
     COMMAND dimSafe_benchmark
@@ -128,4 +139,9 @@ add_test(
 add_test(
     NAME dimSafe_test_comparisons
     COMMAND dimSafe_test_comparisons
+)
+
+add_test(
+    NAME dimSafe_test_constructors
+    COMMAND dimSafe_test_constructors
 )
